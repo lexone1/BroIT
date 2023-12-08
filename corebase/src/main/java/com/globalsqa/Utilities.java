@@ -1,42 +1,12 @@
 package com.globalsqa;
 
 import com.globalsqa.page.BaseDataTable;
-import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
-import com.google.common.collect.Collections2;
 
 import io.cucumber.datatable.DataTable;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.text.WordUtils;
-import org.apache.commons.text.similarity.LevenshteinDistance;
-import org.junit.Assert;
-import org.springframework.context.NoSuchMessageException;
 
-import java.io.*;
-import java.lang.reflect.Method;
-import java.math.BigDecimal;
-import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Generic Utility static methods that are application/project independent
