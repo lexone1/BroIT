@@ -380,108 +380,12 @@ public class BaseDataTable implements Iterable<DataTable>
 
 		if (foundKeywords.size() > 0)
 		{
-//			logger.debug("Inline keywords found: " + Arrays.toString(foundKeywords.toArray()));
 			for (String keyword : foundKeywords)
 			{
 				cucumberString = cucumberString.replaceFirst(KEYWORDS_PATTERN,
 						Matcher.quoteReplacement(getValueFromCucumberString(keyword)));
 			}
-//			logger.debug("Final string with replaced keywords: " + cucumberString);
 		}
 		return cucumberString;
 	}
-
-	/**
-	 * Parses date and modifies it according to provided values and by calendar set
-	 *
-	 * @param date date
-	 * @param pattern pattern parser
-	 * @param cucumberString cucumber string
-	 * @param calendar calendar
-	 * @return
-	 */
-//	private static Date modifyDate(Date date, String pattern, String cucumberString, int calendar)
-//	{
-//		// check for moving datetime forwards or backwards (by minutes)
-//		Pattern p = Pattern.compile(pattern);
-//		Matcher m = p.matcher(cucumberString);
-//		if (m.find())
-//		{
-//			boolean positive = positiveCheck.contains(m.group(1));
-//			int adjustment = Integer.parseInt(m.group(2));
-//			if (cucumberString.contains(BaseConstants.DATATABLE_KEYWORD_BUSINESS_DAYS))
-//			{
-//				date = DateUtilities.moveDateBusinessDays(date, (positive ? adjustment : -adjustment));
-//			}
-//			else if (cucumberString.contains(BaseConstants.DATATABLE_KEYWORD_CANT_LAND_DAYS))
-//			{
-//				date = DateUtilities.moveDateCantLandDays(date, (positive ? adjustment : -adjustment));
-//			}
-//			else
-//			{
-//				date = DateUtilities.moveDate(date, calendar, (positive ? adjustment : -adjustment));
-//			}
-//		}
-//		return date;
-//	}
-
-//	/**
-//	 * Adds postfix to property and extracts its value.
-//	 *
-//	 * @param propertyPostfix - postfix for properties
-//	 * @param keywordPrefix - BaseDataTable keyword prefix
-//	 * @param cucumberString - cucumber string
-//	 * @return {@link String} result cucumber string
-//	 */
-//	private static String getFromPropertyWithPostfix(String propertyPostfix, String keywordPrefix,
-//			String cucumberString)
-//	{
-//		if (propertyPostfix.isEmpty())
-//		{
-//			cucumberString = cucumberString.replace(keywordPrefix, BaseConstants.DATATABLE_KEYWORD_PROPERTY);
-//		}
-//		else
-//		{
-//			StringBuilder builder = new StringBuilder(BaseConstants.DATATABLE_KEYWORD_PROPERTY);
-//			cucumberString = cucumberString.replaceFirst(keywordPrefix, "");
-//			String[] keyWords = new String[] { "_minus", "_plus", "_multiply", "{" };
-//			int position = StringUtils.indexOfAny(cucumberString, keyWords);
-//			if (position != BaseConstants.NO_MATCH_FOUND)
-//			{
-//				builder.append(cucumberString.substring(0, position));
-//				builder.append(propertyPostfix);
-//				builder.append(cucumberString.substring(position, cucumberString.length()));
-//			}
-//			else
-//			{
-//				builder.append(cucumberString);
-//				builder.append(propertyPostfix);
-//			}
-//			cucumberString = builder.toString();
-//		}
-//		return getValueFromCucumberString(cucumberString);
-//	}
-
-//	/**
-//	 * Parses string for commands represented as "_plus" and return map of position + command represented as "+" map
-//	 * will be sorted by position due to the treemap nature
-//	 *
-//	 * @param initialString inputString
-//	 * @return map of position + math command
-//	 */
-//	static private Map<Integer, String> getAllIndexes(String initialString)
-//	{
-//		Map<Integer, String> map = new TreeMap<>();
-//		for (MathOperations command : MathOperations.values())
-//		{
-//			StringUtils.indexOfAny(initialString, command.getName());
-//			int index = initialString.indexOf(command.getName());
-//			while (index >= 0)
-//			{
-//				map.put(index, command.getRepresentation());
-//				index = initialString.indexOf(command.getName(), index + 1);
-//			}
-//		}
-//		return map;
-//	}
 }
