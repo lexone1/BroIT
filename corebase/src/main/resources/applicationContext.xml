@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<context:annotation-config/>
+	<context:property-placeholder location="classpath:runconfig.properties"
+								  ignore-resource-not-found="true" system-properties-mode="OVERRIDE"/>
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<ref bean="propertyFiles"/>
+		</property>
+	</bean>
+
+	<bean id="applicationContextProvider" class="com.globalsqa.ApplicationContextProvider"/>
+	<context:component-scan base-package="com.globalsqa">
+		<context:include-filter type="annotation"
+								expression="com.globalsqa.common.annotation.QAComponent"/>
+	</context:component-scan>
+
+	<beans profile="scale">
+		<bean id="webDriver" class="com.globalsqa.common.BaseWebDriver" scope="thread">
+			<aop:scoped-proxy/>
+		</bean>
+	</beans>
+</beans>
