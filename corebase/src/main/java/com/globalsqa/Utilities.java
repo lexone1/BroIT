@@ -10,8 +10,6 @@ import java.util.*;
 
 /**
  * Generic Utility static methods that are application/project independent
- *
- * @author Aliaksei Pershyts
  */
 public class Utilities
 {

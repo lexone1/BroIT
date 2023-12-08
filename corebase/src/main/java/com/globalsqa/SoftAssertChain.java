@@ -5,8 +5,6 @@ import java.util.List;
 
 /**
  * Simple bean to collect failures that occurred during the processing of soft assertion tests.
- * <p>
- * Created by dmcknight on 8/5/2015.
  */
 public class SoftAssertChain
 {
